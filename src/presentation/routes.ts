@@ -1,17 +1,25 @@
-import { Router } from "express";
-import { TodosController } from "./todos/controller";
-import { TodosRoutes } from "./todos/routes";
+import { Router } from 'express';
+
+import { TodoRoutes } from './todos/routes';
 
 
 
-export class AppRoutes{
 
-    static get routes(): Router {
+export class AppRoutes {
 
-        const router = Router();
-        router.use('/api/todos', TodosRoutes.routes);
 
-        return router;
-    }
+  static get routes(): Router {
+
+    const router = Router();
+
+    router.use('/api/todos', TodoRoutes.routes );
     
+
+
+
+    return router;
+  }
+
+
 }
+

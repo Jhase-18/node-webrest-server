@@ -1,23 +1,27 @@
-import { Router } from "express";
-import { TodosController } from "./controller";
+import { Router } from 'express';
+import { TodosController } from './controller';
 
 
+export class TodoRoutes {
 
 
-export class TodosRoutes{
+  static get routes(): Router {
 
-    static get routes(): Router {
+    const router = Router();
 
-        const router = Router();
-        const todosController = new TodosController();
+    const todoController = new TodosController();
 
-        router.get('/', todosController.getTodos);
-        router.get('/:id', todosController.getTodosId);
-        router.post('/', todosController.createTodo);
-        router.put('/:id', todosController.updateTodo);
-        router.delete('/:id', todosController.deleteTodo);
-
-        return router;
-    }
+    router.get('/', todoController.getTodos );
+    router.get('/:id', todoController.getTodoById );
     
+    router.post('/', todoController.createTodo );
+    router.put('/:id', todoController.updateTodo );
+    router.delete('/:id', todoController.deleteTodo );
+
+
+    return router;
+  }
+
+
 }
+
